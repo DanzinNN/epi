@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:epi/Pages/login.dart';
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "EPI",
+      home: login(),
     );
   }
-}
+}                          
