@@ -33,7 +33,7 @@ class _loginState extends State<login> {
                   SizedBox(
                     height: 50,
                   ),
-                  Image.asset("images/logo.png"),
+                  Image.asset("asset/logo.png"),
                   Text("Bem-Vindo",
                   style: TextStyle(
                     color: Colors.black,
@@ -51,7 +51,7 @@ class _loginState extends State<login> {
                   ),
                   SizedBox(
                     width: 318,
-                    height: 32,
+                    height: 50,
                      child :Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16.0),
                     child: TextField(
@@ -68,7 +68,7 @@ class _loginState extends State<login> {
                   ),
                   SizedBox(
                     width: 318,
-                    height: 32,
+                    height: 50,
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 16.0),
                       child: TextField(
