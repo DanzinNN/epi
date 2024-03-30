@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:epi/Pages/login.dart';
+import 'package:epi/Pages/criando_perfil.dart';
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
