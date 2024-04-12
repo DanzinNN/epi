@@ -14,11 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "EPI",
-<<<<<<< HEAD
-      home: Lista_Funcionarios(),
-=======
-      home: _Dashboard(),
->>>>>>> 0f10e3387c57eae52a006b8e117929ac68332385
+      home: Dashboard(),
     );
   }
 }                          
