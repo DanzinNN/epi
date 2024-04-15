@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:epi/Pages/login.dart';
 import 'package:epi/Pages/criando_perfil.dart';
 import 'package:epi/pages/dashboard.dart';
+import 'package:epi/Pages/ident.dart';
 
 void main() => runApp(const MyApp());
 
@@ -17,4 +18,4 @@ class MyApp extends StatelessWidget {
       home: Dashboard(),
     );
   }
-}                          
+}
