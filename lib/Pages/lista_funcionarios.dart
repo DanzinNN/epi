@@ -1,20 +1,21 @@
+import 'package:epi/Pages/perfil_funcionario.dart';
 import 'package:flutter/material.dart';
 
 class Lista_Funcionarios extends StatefulWidget {
   const Lista_Funcionarios({Key? key});
 
   @override
-  State<Lista_Funcionarios> createState() => _Lista_FuncionariosState();
+  State<Lista_Funcionarios> createState() => _ListaFuncionariosState();
 }
 
-class _Lista_FuncionariosState extends State<Lista_Funcionarios> {
+class _ListaFuncionariosState extends State<Lista_Funcionarios> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        elevation: 0, // Remove a sombra da AppBar
+        elevation: 0,
         title: Text(
           "Funcionários",
           style: TextStyle(
@@ -32,7 +33,10 @@ class _Lista_FuncionariosState extends State<Lista_Funcionarios> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: 
+              (context) => Perfil_Funcionario()));
+            },
             icon: Icon(Icons.person_add_alt, color: Colors.black),
           )
         ],
@@ -40,7 +44,7 @@ class _Lista_FuncionariosState extends State<Lista_Funcionarios> {
       body: Stack(
         children: [
           Positioned(
-            top: kToolbarHeight, // Posiciona abaixo da AppBar
+            top: kToolbarHeight,
             left: 0,
             right: 0,
             child: Container(
@@ -53,11 +57,16 @@ class _Lista_FuncionariosState extends State<Lista_Funcionarios> {
                     hintText: "Buscar",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide.none, // Remove a borda
+                      borderSide: BorderSide.none,
                     ),
                     filled: true,
-                    fillColor: Colors.grey.shade300, // Cor de fundo do TextField
-                    prefixIcon: Icon(Icons.search),
+                    fillColor: Colors.grey.shade300,
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                      },
+                      icon: Icon(Icons.search),
+                      color: Colors.grey,
+                    ),
                   ),
                 ),
               ),
