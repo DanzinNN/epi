@@ -1,3 +1,4 @@
+import 'package:epi/Pages/home.dart';
 import 'package:flutter/material.dart';
 import "cadastro.dart";
 
@@ -101,6 +102,9 @@ class _loginState extends State<login> {
                   height: 32,
                   child: ElevatedButton(
                   onPressed: (){
+                    Navigator.push(context, 
+                    MaterialPageRoute(builder: (context) => home()),
+                    );
 
                  }, 
                  style: ElevatedButton.styleFrom(
