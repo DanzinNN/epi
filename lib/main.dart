@@ -1,3 +1,4 @@
+import 'package:epi/Pages/lista_epi.dart';
 import 'package:epi/Pages/lista_funcionarios.dart';
 import 'package:epi/Pages/perfil_funcionario.dart';
 import 'package:flutter/material.dart';

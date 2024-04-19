@@ -1,127 +1,86 @@
 import 'package:flutter/material.dart';
+import 'package:fl_chart/fl_chart.dart';
 
-class Dashboard extends StatefulWidget {
-  const Dashboard({Key? key}) : super(key: key);
-
-  @override
-  State<Dashboard> createState() => _DashboardState();
-}
-
-class _DashboardState extends State<Dashboard> {
+class MyBarChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(
-          "Dashboard",
-          style: TextStyle(
-              color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold),
-        ),
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.blueAccent,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        title: Text('Bar Chart Example'),
       ),
-      body: Column(
-        children: [
-          SizedBox(height: 28),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Spacer(),
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                height: 72,
-                width: 91,
-                child: Center(
-                  child: Text(
-                    "Total de\nfuncionários",
-                    style: TextStyle(
-                      fontSize: 8,
-                      fontFamily: 'Roboto',
+      body: Center(
+        child: Container(
+          width: 300, // Set custom width
+          height: 200, // Set custom height
+          child: BarChart(
+            BarChartData(
+              // Bar groups
+              barGroups: [
+                BarChartGroupData(
+                  x: 0,
+                  barRods: [
+                    BarChartRodData(
+                      y: 5,
+                      colors: [Colors.blue],
                     ),
-                    textAlign: TextAlign.start,
-                  ),
+                  ],
                 ),
-              ),
-              Spacer(),
-              Container(
-                decoration: BoxDecoration(
-                  color: Color.fromRGBO(121, 234, 153, 1.0),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                height: 72,
-                width: 91,
-                child: Center(
-                  child: Text(
-                    "Total de\nfuncionários",
-                    style: TextStyle(
-                      fontSize: 8,
-                      fontFamily: 'Roboto',
+                BarChartGroupData(
+                  x: 1,
+                  barRods: [
+                    BarChartRodData(
+                      y: 8,
+                      colors: [Colors.green],
                     ),
-                    textAlign: TextAlign.left,
+                  ],
+                ),
+                BarChartGroupData(
+                  x: 2,
+                  barRods: [
+                    BarChartRodData(
+                      y: 6,
+                      colors: [Colors.orange],
+                    ),
+                  ],
+                ),
+              ],
+              // Titles
+              titlesData: FlTitlesData(
+                bottomTitles: SideTitles(
+                  showTitles: true,
+                  getTextStyles: (value) => const TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
                   ),
+                  margin: 10,
+                  getTitles: (double value) {
+                    switch (value.toInt()) {
+                      case 0:
+                        return 'A';
+                      case 1:
+                        return 'B';
+                      case 2:
+                        return 'C';
+                      default:
+                        return '';
+                    }
+                  },
                 ),
+                leftTitles: SideTitles(showTitles: false),
               ),
-              Spacer(),
-              Container(
-                decoration: BoxDecoration(
-                  color: Color.fromRGBO(241, 245, 0, 1.0),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                height: 72,
-                width: 91,
-                child: Center(
-                  child: Text("Total de funcionários"),
-                ),
-              ),
-              Spacer(),
-            ],
+            ),
+            swapAnimationDuration: Duration(milliseconds: 150), // Optional
+            swapAnimationCurve: Curves.linear, // Optional
           ),
-        ],
+        ),
       ),
     );
   }
 }
 
-
-// Container(
-//   decoration: BoxDecoration(
-//     color: Color.fromRGBO(173, 210, 25, 76),
-//     borderRadius: BorderRadius.circular(10),
-//   ),
-//   height: 72,
-//   width: 119,
-//   child: Column(
-//     crossAxisAlignment: CrossAxisAlignment.start,
-//     children: [
-//       Padding(
-//         padding: EdgeInsets.only(left: 8), // Ajuste o valor conforme necessário
-//         child: Text(
-//           "0000",
-//           style: TextStyle(fontFamily: 'Roboto', fontSize: 15),
-//           textAlign: TextAlign.end,
-//         ),
-//       ),
-//       Padding(
-//         padding: EdgeInsets.only(left: 8, top: 4), // Ajuste o valor conforme necessário
-//         child: Text(
-//           "EPIs próximo a data\nde expiração",
-//           style: TextStyle(fontSize: 8, fontFamily: 'Roboto'),
-//           textAlign: TextAlign.start,
-//         ),
-//       ),
-//     ],
-//   ),
-// ),
-// CASO EU QUEIRA COLOCAR ESPAÇAMENTO ENTRE TEXTO E CONTAINER
+void main() {
+  runApp(MaterialApp(
+    home: MyBarChart(),
+  ));
+}

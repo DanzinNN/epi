@@ -29,7 +29,7 @@ class _TelaIdentState extends State<TelaIdent> {
         backgroundColor: Colors.white,
         leading: IconButton(
           icon: Icon(
-            Icons.arrow_back,
+            Icons.arrow_circle_left_outlined,
             color: Colors.blueAccent,
           ),
           onPressed: () {
