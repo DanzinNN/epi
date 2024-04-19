@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "EPI",
-      home: login(),
+      home: Perfil_Funcionario(),
     );
   }
 }
