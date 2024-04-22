@@ -47,18 +47,20 @@ class _PerfilFuncionarioState extends State<Perfil_Funcionario> {
           Expanded(
             child: Center(
               child: SizedBox(
-                width: 304,
-                height: 363,
+                width: 363,
+                height: 373,
                 child: Container(
                   decoration: BoxDecoration(
                     color: Colors.grey.shade200,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   padding: EdgeInsets.all(16.0),
-                  child: Stack(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Column(
                             children: [
@@ -82,187 +84,35 @@ class _PerfilFuncionarioState extends State<Perfil_Funcionario> {
                                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                                 ),
                               ),
+                              SizedBox(height: 10,),
+                              Icon(
+                                Icons.warning,
+                                color: Colors.red,
+                              ),
+                              SizedBox(width: 8), // Espaçamento entre o ícone e o texto
+                              Text(
+                                "Relatar algum problema",
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: Colors.black,
+                                ),
+                              ),
                             ],
                           ),
                         ],
                       ),
-                      Positioned(
-                        top: 0,
-                        right: 0,
-                        child: IconButton(
-                          onPressed: () {
-                            // Adicione sua lógica de edição aqui
-                          },
-                          icon: Icon(Icons.edit),
-                          color: Colors.black,
-                        ),
-                      ),
-                      Positioned(
-                        top: 48, // Ajustando a posição do TextField
-                        right: 0,
-                        child: Container(
-                          width: 147,
-                          height: 28,
-                          decoration: BoxDecoration(
-                            color: Colors.grey,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              hintText: 'Cargo',
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.symmetric(horizontal: 12.0),
-                            ),
-                            onChanged: (value) {
-                              setState(() {
-                                _cargo = value;
-                              });
-                            },
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top:88, // Ajustando a posição do TextField
-                        right: 0,
-                        child: Container(
-                          width: 147,
-                          height: 28,
-                          decoration: BoxDecoration(
-                            color: Colors.grey,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              hintText: 'Cargo',
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.symmetric(horizontal: 12.0),
-                            ),
-                            onChanged: (value) {
-                              setState(() {
-                                _cargo = value;
-                              });
-                            },
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 128, // Ajustando a posição do TextField
-                        right: 0,
-                        child: Container(
-                          width: 147,
-                          height: 28,
-                          decoration: BoxDecoration(
-                            color: Colors.grey,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              hintText: 'Cargo',
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.symmetric(horizontal: 12.0),
-                            ),
-                            onChanged: (value) {
-                              setState(() {
-                                _cargo = value;
-                              });
-                            },
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 168, // Ajustando a posição do TextField
-                        right: 0,
-                        child: Container(
-                          width: 147,
-                          height: 28,
-                          decoration: BoxDecoration(
-                            color: Colors.grey,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              hintText: 'Cargo',
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.symmetric(horizontal: 12.0),
-                            ),
-                            onChanged: (value) {
-                              setState(() {
-                                _cargo = value;
-                              });
-                            },
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 208, // Ajustando a posição do TextField
-                        right: 0,
-                        child: Container(
-                          width: 147,
-                          height: 28,
-                          decoration: BoxDecoration(
-                            color: Colors.grey,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              hintText: 'Cargo',
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.symmetric(horizontal: 12.0),
-                            ),
-                            onChanged: (value) {
-                              setState(() {
-                                _cargo = value;
-                              });
-                            },
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 248, // Ajustando a posição do TextField
-                        right: 0,
-                        child: Container(
-                          width: 147,
-                          height: 28,
-                          decoration: BoxDecoration(
-                            color: Colors.grey,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              hintText: 'Cargo',
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.symmetric(horizontal: 12.0),
-                            ),
-                            onChanged: (value) {
-                              setState(() {
-                                _cargo = value;
-                              });
-                            },
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 288, // Ajustando a posição do TextField
-                        right: 0,
-                        child: Container(
-                          width: 147,
-                          height: 28,
-                          decoration: BoxDecoration(
-                            color: Colors.grey,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              hintText: 'Cargo',
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.symmetric(horizontal: 12.0),
-                            ),
-                            onChanged: (value) {
-                              setState(() {
-                                _cargo = value;
-                              });
-                            },
-                          ),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            SizedBox(height: 24), // Adicionando espaçamento no topo dos TextField
+                            buildTextField('Cargo:'),
+                            buildTextField('Departamento'),
+                            buildTextField('N° de Identificação'),
+                            buildTextField('Tipos de EPIs'),
+                            buildTextField('CPF'),
+                            buildTextField('N° de Contato'),
+                            buildTextField('Data de Nascimento'),
+                          ],
                         ),
                       ),
                     ],
@@ -271,7 +121,59 @@ class _PerfilFuncionarioState extends State<Perfil_Funcionario> {
               ),
             ),
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ElevatedButton.icon(
+                onPressed: () {
+                  // Lógica para desativar conta
+                },
+                icon: Icon(Icons.lock),
+                label: Text('Desativar Conta'),
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.black, backgroundColor: Colors.grey,
+                ),
+              ),
+              SizedBox(width: 16), // Espaçamento entre os botões
+              ElevatedButton.icon(
+                onPressed: () {
+                  // Lógica para excluir conta
+                },
+                icon: Icon(Icons.delete),
+                label: Text('Excluir Conta'),
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white, backgroundColor: Colors.red,
+                ),
+              ),
+            ],
+          ),
         ],
+        
+      ),
+    );
+  }
+
+  Widget buildTextField(String hintText) {
+    return Container(
+      width: 147,
+      height: 28,
+      margin: EdgeInsets.only(bottom: 16),
+      decoration: BoxDecoration(
+        color: Colors.grey,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: TextField(
+        decoration: InputDecoration(
+          hintText: hintText,
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.all(10),
+        ),
+        onChanged: (value) {
+          setState(() {
+            _cargo = value;
+          });
+        },
       ),
     );
   }
