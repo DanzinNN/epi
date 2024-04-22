@@ -31,9 +31,12 @@ class _cadastroState extends State<cadastro> {
           ),
           onPressed: () {
             Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => login()),
-            );
+          context,
+          PageRouteBuilder(transitionDuration: Duration.zero, pageBuilder: (context, animation, secondaryAnimation) {
+              return login();
+          }
+         ),
+        );
           },
         ),
       ),
@@ -86,9 +89,12 @@ class _cadastroState extends State<cadastro> {
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => CriandoPerfil()),
-                  );
+          context,
+          PageRouteBuilder(transitionDuration: Duration.zero, pageBuilder: (context, animation, secondaryAnimation) {
+              return CriandoPerfil();
+          }
+         ),
+        );
                 },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Color.fromRGBO(51, 153, 255, 1),

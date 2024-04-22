@@ -1,15 +1,16 @@
 import 'package:epi/Pages/home.dart';
+import 'package:epi/Pages/perfil_admin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class CriandoPerfil extends StatefulWidget {
-  const CriandoPerfil({Key? key}) : super(key: key);
+class info_gerais extends StatefulWidget {
+  const info_gerais({Key? key}) : super(key: key);
 
   @override
-  State<CriandoPerfil> createState() => _CriandoPerfilState();
+  State<info_gerais> createState() => _InfoGeraisState();
 }
 
-class _CriandoPerfilState extends State<CriandoPerfil> {
+class _InfoGeraisState extends State<info_gerais> {
   final TextEditingController _nomeController = TextEditingController();
   final TextEditingController _cpfController = TextEditingController();
   final TextEditingController _dataNascimentoController = TextEditingController();
@@ -44,33 +45,27 @@ class _CriandoPerfilState extends State<CriandoPerfil> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false, 
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 10), 
-            Text(
-              "Criando",
-              textAlign: TextAlign.center, 
-              style: TextStyle(
-                color: Colors.blueAccent,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              "Perfil",
-              textAlign: TextAlign.center, 
-              style: TextStyle(
-                color: Colors.blueAccent,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
+        titleSpacing: 10.0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                transitionDuration: Duration.zero,
+                                pageBuilder: (context, animation, secondaryAnimation) {
+                                  return perfil_admin();
+                                },
+                              ),
+                            );
+          },
+          icon: Icon(
+            Icons.arrow_circle_left_outlined,
+            size: 32,
+            color: Colors.blueAccent,
+          ),
         ),
-        titleSpacing: 15.0, 
       ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -79,9 +74,9 @@ class _CriandoPerfilState extends State<CriandoPerfil> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 20), 
+              SizedBox(height: 20),
               Padding(
-                padding: EdgeInsets.only(top: 20), 
+                padding: EdgeInsets.only(top: 20),
                 child: SizedBox(
                   width: 318,
                   height: 50,
@@ -215,31 +210,36 @@ class _CriandoPerfilState extends State<CriandoPerfil> {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
-              
+              SizedBox(height: 15),
+
               Align(
                 alignment: Alignment.centerRight,
                 child: Container(
-                  width: 50,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: _isValid ? Colors.blue.withOpacity(0.1) : Colors.grey.withOpacity(0.5),
-                  ),
-                  child: IconButton(
-                    onPressed: _isValid ? () {
-                      Navigator.push(
-          context,
-          PageRouteBuilder(transitionDuration: Duration.zero, pageBuilder: (context, animation, secondaryAnimation) {
-              return home();
-          }
-         ),
-        );
-                    } : null,
-                    icon: Icon(
-                      Icons.check,
-                      size: 30,
-                      color: Colors.blueAccent,
+                  width: 160,
+                  height: 40,
+                  child: ElevatedButton(
+                    onPressed: _isValid
+                        ? () {
+                            Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                transitionDuration: Duration.zero,
+                                pageBuilder: (context, animation, secondaryAnimation) {
+                                  return perfil_admin();
+                                },
+                              ),
+                            );
+                          }
+                        : null,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: _isValid ? Colors.blueAccent : Colors.grey,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                    child: Text(
+                      'Editar Informações',
+                      style: TextStyle(fontSize: 12, color: Colors.white),
                     ),
                   ),
                 ),

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:epi/Pages/adicionar_epi.dart';
+import 'package:epi/Pages/perfil_admin.dart';
+import 'package:epi/Pages/notificacoes.dart'; // Importe a tela notificacoes.dart
 
 class home extends StatefulWidget {
   const home({Key? key}) : super(key: key);
@@ -9,11 +12,41 @@ class home extends StatefulWidget {
 
 class _HomeState extends State<home> {
   int _selectedIndex = 0;
+  bool hasNotifications = true; // Altere para true ou false conforme necessário
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    switch (index) {
+      case 0:
+        // Navegar para a tela Home
+        Navigator.push(
+          context,
+          PageRouteBuilder(transitionDuration: Duration.zero, pageBuilder: (context, animation, secondaryAnimation) {
+            return home();
+          }),
+        );
+        break;
+      case 1:
+        // Navegar para a tela de adicionar EPIs
+        Navigator.push(
+          context,
+          PageRouteBuilder(transitionDuration: Duration.zero, pageBuilder: (context, animation, secondaryAnimation) {
+            return adicionar_epi();
+          }),
+        );
+        break;
+      case 2:
+        // Navegar para a tela do perfil do administrador
+        Navigator.push(
+          context,
+          PageRouteBuilder(transitionDuration: Duration.zero, pageBuilder: (context, animation, secondaryAnimation) {
+            return perfil_admin();
+          }),
+        );
+        break;
+      default:
+        // Se o índice não corresponder a nenhuma tela, não faz nada
+        break;
+    }
   }
 
   Widget _buildIcon(IconData icon, int index) {
@@ -47,10 +80,32 @@ class _HomeState extends State<home> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         actions: [
-          IconButton(
-            icon: Icon(Icons.notifications),
-            onPressed: () {},
-          )
+          Stack(
+            children: [
+              IconButton(
+                icon: Icon(Icons.notifications),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => notificacoes()),
+                  );
+                },
+              ),
+              if (hasNotifications)
+                Positioned(
+                  right: 25,
+                  bottom: 25,
+                  child: Container(
+                    padding: EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.blue, // Cor da bolinha azul
+                    ),
+                    child: SizedBox(),
+                  ),
+                ),
+            ],
+          ),
         ],
       ),
       body: Padding(
@@ -58,39 +113,26 @@ class _HomeState extends State<home> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              height: 50,
-              decoration: BoxDecoration(
-                color: Color.fromARGB(217, 217, 217, 217),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          'Buscar',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: Icon(
-                      Icons.search,
-                      color: Colors.black,
-                      size: 30,
-                    ),
-                  ),
-                ],
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Buscar',
+                hintStyle: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                ),
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: Colors.black,
+                  size: 30,
+                ),
+                filled: true,
+                fillColor: Color.fromARGB(217, 217, 217, 217),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide.none,
+                ),
+                contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 8),
               ),
             ),
             SizedBox(height: 46),

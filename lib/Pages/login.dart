@@ -102,9 +102,13 @@ class _loginState extends State<login> {
                   height: 32,
                   child: ElevatedButton(
                   onPressed: (){
-                    Navigator.push(context, 
-                    MaterialPageRoute(builder: (context) => home()),
-                    );
+                    Navigator.push(
+          context,
+          PageRouteBuilder(transitionDuration: Duration.zero, pageBuilder: (context, animation, secondaryAnimation) {
+              return home();
+          }
+         ),
+        );
 
                  }, 
                  style: ElevatedButton.styleFrom(
@@ -132,9 +136,13 @@ class _loginState extends State<login> {
                 )),
                 GestureDetector(
                   onTap: (){
-                    Navigator.push(context, 
-                    MaterialPageRoute(builder: (context) => cadastro()),
-                    );
+                    Navigator.push(
+          context,
+          PageRouteBuilder(transitionDuration: Duration.zero, pageBuilder: (context, animation, secondaryAnimation) {
+              return cadastro();
+          }
+         ),
+        );
                   },
                   child: Text(
                     "Cadastre-se aqui",
