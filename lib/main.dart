@@ -1,3 +1,4 @@
+import 'package:epi/Pages/detalhamento_epi.dart';
 import 'package:epi/Pages/lista_epi.dart';
 import 'package:epi/Pages/lista_funcionarios.dart';
 import 'package:epi/Pages/perfil_funcionario.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "EPI",
-      home: login(),
+      home: Detalhamento_Epi(),
     );
   }
 }

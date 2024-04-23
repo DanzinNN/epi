@@ -47,7 +47,7 @@ class _PerfilFuncionarioState extends State<Perfil_Funcionario> {
           Expanded(
             child: Center(
               child: SizedBox(
-                width: 363,
+                width: 383,
                 height: 373,
                 child: Container(
                   decoration: BoxDecoration(
@@ -69,7 +69,7 @@ class _PerfilFuncionarioState extends State<Perfil_Funcionario> {
                                 width: 102,
                                 height: 104,
                               ),
-                              SizedBox(width: 16), // Adicionando espaçamento entre a imagem e o botão
+                              SizedBox(width: 16), 
                               ElevatedButton(
                                 onPressed: () {},
                                 child: Text(
@@ -89,7 +89,7 @@ class _PerfilFuncionarioState extends State<Perfil_Funcionario> {
                                 Icons.warning,
                                 color: Colors.red,
                               ),
-                              SizedBox(width: 8), // Espaçamento entre o ícone e o texto
+                              SizedBox(width: 8), 
                               Text(
                                 "Relatar algum problema",
                                 style: TextStyle(
@@ -104,7 +104,7 @@ class _PerfilFuncionarioState extends State<Perfil_Funcionario> {
                       Expanded(
                         child: Column(
                           children: [
-                            SizedBox(height: 24), // Adicionando espaçamento no topo dos TextField
+                            SizedBox(height: 24), 
                             buildTextField('Cargo:'),
                             buildTextField('Departamento'),
                             buildTextField('N° de Identificação'),
@@ -115,6 +115,20 @@ class _PerfilFuncionarioState extends State<Perfil_Funcionario> {
                           ],
                         ),
                       ),
+                      Positioned(
+                        top: 0,
+                        right: 0,
+                        child: SizedBox(
+                          child: ElevatedButton.icon(onPressed: (){
+
+                        },
+                        style: ElevatedButton.styleFrom(
+                          iconColor: Colors.grey,
+                          backgroundColor: Colors.grey.shade200
+                        ),
+                        label: Icon(Icons.edit)),
+                        )
+                        ),
                     ],
                   ),
                 ),
@@ -135,7 +149,7 @@ class _PerfilFuncionarioState extends State<Perfil_Funcionario> {
                   foregroundColor: Colors.black, backgroundColor: Colors.grey,
                 ),
               ),
-              SizedBox(width: 16), // Espaçamento entre os botões
+              SizedBox(width: 16),
               ElevatedButton.icon(
                 onPressed: () {
                   // Lógica para excluir conta
