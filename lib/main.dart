@@ -1,4 +1,6 @@
+import 'package:epi/Pages/cadastro_epi.dart';
 import 'package:epi/Pages/detalhamento_epi.dart';
+import 'package:epi/Pages/editando_informacoes.dart';
 import 'package:epi/Pages/lista_epi.dart';
 import 'package:epi/Pages/lista_funcionarios.dart';
 import 'package:epi/Pages/perfil_funcionario.dart';
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "EPI",
-      home: Detalhamento_Epi(),
+      home: Editando_Informacoes(),
     );
   }
 }
