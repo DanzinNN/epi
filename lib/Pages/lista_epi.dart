@@ -1,3 +1,6 @@
+import 'package:epi/Pages/cadastro_epi.dart';
+import 'package:epi/Pages/home.dart';
+import 'package:epi/Pages/notificacoes.dart';
 import 'package:flutter/material.dart';
 
 class Lista_Epi extends StatefulWidget {
@@ -8,6 +11,8 @@ class Lista_Epi extends StatefulWidget {
 }
 
 class _Lista_EpiState extends State<Lista_Epi> {
+  get showNotificationDot => true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,12 +25,36 @@ class _Lista_EpiState extends State<Lista_Epi> {
             color: Colors.blueAccent,
           ),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> home()));
           },
         ),
         actions: [
-          Icon(Icons.notifications_none),
-          SizedBox(width: 10)
+          Stack( // Utilizando o Stack para sobrepor o ícone de notificação com a bolinha azul
+            children: [
+              IconButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => notificacoes()));
+                  setState(() {
+                    var showNotificationDot = false; // Quando o usuário abrir as notificações, a bolinha some
+                  });
+                },
+                icon: Icon(Icons.notifications_none),
+              ),
+              if (showNotificationDot) // Se showNotificationDot for verdadeiro, mostrar a bolinha azul
+                Positioned(
+                  top: 8,
+                  right: 8,
+                  child: Container(
+                    width: 10,
+                    height: 10,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.blue,
+                    ),
+                  ),
+                ),
+            ],
+          ),
         ],
       ),
       body: Column(
@@ -36,7 +65,7 @@ class _Lista_EpiState extends State<Lista_Epi> {
               IconButton(
                 icon: Icon(Icons.add_circle_outline_outlined, color: Colors.blueAccent),
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Cadastro_Epi()));
                 },
               ),
             ],

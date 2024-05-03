@@ -1,3 +1,7 @@
+import 'package:epi/Pages/backup.dart';
+import 'package:epi/Pages/cadastro_epi.dart';
+import 'package:epi/Pages/lista_epi.dart';
+import 'package:epi/Pages/lista_funcionarios.dart';
 import 'package:flutter/material.dart';
 import 'package:epi/Pages/adicionar_epi.dart';
 import 'package:epi/Pages/perfil_admin.dart';
@@ -83,7 +87,7 @@ class _HomeState extends State<home> {
           Stack(
             children: [
               IconButton(
-                icon: Icon(Icons.notifications),
+                icon: Icon(Icons.notifications_none),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -136,7 +140,11 @@ class _HomeState extends State<home> {
               ),
             ),
             SizedBox(height: 46),
-            Container(
+            GestureDetector(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard()));
+              },
+            child: Container(
               height: 56,
               decoration: BoxDecoration(
                 color: const Color.fromRGBO(109, 178, 246, 1),
@@ -158,8 +166,13 @@ class _HomeState extends State<home> {
                 ),
               ),
             ),
+            ),
             SizedBox(height: 26),
-            Container(
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Lista_Funcionarios()));
+              },
+            child: Container(
               height: 65,
               decoration: BoxDecoration(
                 color: const Color.fromRGBO(121, 234, 153, 1),
@@ -181,8 +194,13 @@ class _HomeState extends State<home> {
                 ),
               ),
             ),
+            ),
             SizedBox(height: 26),
-            Container(
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Lista_Epi()));
+              },
+            child: Container(
               height: 65,
               decoration: BoxDecoration(
                 color: const Color.fromRGBO(51, 153, 255, 1),
@@ -204,6 +222,7 @@ class _HomeState extends State<home> {
                 ),
               ),
             ),
+            )
           ],
         ),
       ),
@@ -228,7 +247,9 @@ class _HomeState extends State<home> {
               ),
               IconButton(
                 icon: _buildIcon(Icons.add, 1),
-                onPressed: () => _onItemTapped(1),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Cadastro_Epi()));
+                },
               ),
               IconButton(
                 icon: _buildIcon(Icons.account_circle, 2),

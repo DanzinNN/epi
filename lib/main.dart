@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "EPI",
-      home: Editando_Informacoes(),
+      home: home(),
     );
   }
 }

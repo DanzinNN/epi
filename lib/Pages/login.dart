@@ -1,4 +1,5 @@
 import 'package:epi/Pages/home.dart';
+import 'package:epi/Pages/ident.dart';
 import 'package:flutter/material.dart';
 import "cadastro.dart";
 
@@ -139,7 +140,7 @@ class _loginState extends State<login> {
                     Navigator.push(
           context,
           PageRouteBuilder(transitionDuration: Duration.zero, pageBuilder: (context, animation, secondaryAnimation) {
-              return cadastro();
+              return TelaIdent();
           }
          ),
         );

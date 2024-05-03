@@ -1,3 +1,4 @@
+import 'package:epi/Pages/lista_epi.dart';
 import 'package:flutter/material.dart';
 
 class Cadastro_Epi extends StatefulWidget {
@@ -23,7 +24,7 @@ class _Cadastro_EpiState extends State<Cadastro_Epi> {
         ),
         leading: IconButton(
           onPressed: () {
-            // Adicione a navegação de volta aqui
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Lista_Epi()));
           },
           icon: Icon(Icons.arrow_circle_left_outlined, color: Colors.blueAccent),
         ),

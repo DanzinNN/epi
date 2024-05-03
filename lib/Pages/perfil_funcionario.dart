@@ -1,5 +1,6 @@
-import 'package:epi/Pages/lista_funcionarios.dart';
 import 'package:flutter/material.dart';
+import 'package:epi/Pages/lista_funcionarios.dart';
+import 'package:epi/Pages/notificacoes.dart';
 
 class Perfil_Funcionario extends StatefulWidget {
   const Perfil_Funcionario({Key? key}) : super(key: key);
@@ -10,6 +11,7 @@ class Perfil_Funcionario extends StatefulWidget {
 
 class _PerfilFuncionarioState extends State<Perfil_Funcionario> {
   String _cargo = '';
+  bool showNotificationDot = true; // Variável para controlar a exibição da bolinha de notificação
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,29 @@ class _PerfilFuncionarioState extends State<Perfil_Funcionario> {
           ),
         ),
         actions: [
-          Icon(Icons.notifications_none),
+          Stack( // Utilizando o Stack para sobrepor o ícone de notificação com a bolinha azul
+            children: [
+              IconButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => notificacoes()));
+                },
+                icon: Icon(Icons.notifications_none),
+              ),
+              if (showNotificationDot) // Se showNotificationDot for verdadeiro, mostrar a bolinha azul
+                Positioned(
+                  top: 8,
+                  right: 8,
+                  child: Container(
+                    width: 10,
+                    height: 10,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.blue,
+                    ),
+                  ),
+                ),
+            ],
+          ),
         ],
       ),
       body: Column(

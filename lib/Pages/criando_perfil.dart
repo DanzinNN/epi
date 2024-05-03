@@ -233,7 +233,7 @@ class _CriandoPerfilState extends State<CriandoPerfil> {
           PageRouteBuilder(transitionDuration: Duration.zero, pageBuilder: (context, animation, secondaryAnimation) {
               return home();
           }
-         ),
+        ),
         );
                     } : null,
                     icon: Icon(

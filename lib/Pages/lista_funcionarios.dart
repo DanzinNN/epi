@@ -1,3 +1,4 @@
+import 'package:epi/Pages/home.dart';
 import 'package:epi/Pages/perfil_funcionario.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +26,9 @@ class _ListaFuncionariosState extends State<Lista_Funcionarios> {
           ),
         ),
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => home()));
+          },
           icon: Icon(
             Icons.arrow_circle_left_outlined,
             color: Colors.blueAccent,
