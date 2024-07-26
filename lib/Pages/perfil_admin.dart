@@ -142,7 +142,7 @@ class _PerfilAdminState extends State<perfil_admin> {
                 PageRouteBuilder(
                   transitionDuration: Duration.zero,
                   pageBuilder: (context, animation, secondaryAnimation) {
-                    return login();
+                    return Login();
                   },
                 ),
               ),
