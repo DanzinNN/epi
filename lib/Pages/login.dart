@@ -40,7 +40,7 @@ class _LoginState extends State<Login> {
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text("Erro"),
-            content: Text("Falha no login: ${response.body}"),
+            content: Text("${response.body}"),
             actions: <Widget>[
               TextButton(
                 child: Text("OK"),

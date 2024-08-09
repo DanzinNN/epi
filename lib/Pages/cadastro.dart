@@ -16,38 +16,65 @@ class _CadastroState extends State<cadastro> {
   TextEditingController _passwordController = TextEditingController();
 
   Future<void> _register() async {
-    final response = await http.post(
-      Uri.parse('http://127.0.0.1:5000/register'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(<String, String>{
-        'email': _emailController.text,
-        'password': _passwordController.text,
-      }),
-    );
-
-    if (response.statusCode == 200) {
-      Navigator.pushReplacementNamed(context, '/criando_perfil');
-    } else {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text("Erro"),
-            content: Text("Falha no registro: ${response.body}"),
-            actions: <Widget>[
-              TextButton(
-                child: Text("OK"),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          );
-        },
-      );
+    print("Iniciando registro...");
+    String password = _passwordController.text.trim();
+    String email = _emailController.text.trim();
+      if (email.isEmpty || password.isEmpty) {
+        _showErrorDialog("Todos os campos devem ser preenchidos.");
+        return;
+        
+      }
+      if (password.length < 6) {
+        _showErrorDialog("A senha deve conter pelo menos 6 dígitos.");
+        return;
+      
     }
+    try {
+      final response = await http.post(
+        Uri.parse('http://127.0.0.1:5000/register'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, String>{
+          'email': _emailController.text,
+          'password': _passwordController.text,
+        }),
+      );
+
+      print("Resposta: ${response.statusCode}");
+      print("Corpo da resposta: ${response.body}");
+
+      if (response.statusCode == 200) {
+        // Cadastro bem-sucedido, volta para a tela de login
+        Navigator.pop (context, Login());
+      } else {
+        _showErrorDialog("Falha no registro: ${response.body}");
+      }
+    } catch (e) {
+      print("Erro na requisição: $e");
+      _showErrorDialog("Erro ao se conectar ao servidor.");
+    }
+
+  }
+
+  void _showErrorDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Erro"),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
